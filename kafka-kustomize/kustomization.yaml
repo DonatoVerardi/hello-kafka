@@ -6,3 +6,4 @@ namespace: kafka
 resources:
   - namespace
   - cluster
+  - role-binding
