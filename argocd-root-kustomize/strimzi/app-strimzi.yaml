@@ -6,7 +6,7 @@ spec:
   project: strimzi
   source:
     repoURL: "https://github.com/DonatoVerardi/hello-kafka.git"
-    path: "/strimzi-kustomize"
+    path: "strimzi-kustomize"
     targetRevision: "master"
   destination:
     server: "https://kubernetes.default.svc"
