@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: strimzi
+namespace: argocd
 
 resources:
-  - namespace
-
+  - app-kafka.yaml
+  - prj-kafka.yaml

@@ -37,3 +37,9 @@ Cheers!
 > minikube service argocd -n argocd
 
 > kustomize build ./argocd-root-kustomize/\_bootstrap/ | kubectl apply -f -
+
+> wget https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.27.1/strimzi-0.27.1.zip -O ./strimzi-kustomize/\_source/strimzi.zip
+
+> unzip ./strimzi-kustomize/\_source/strimzi.zip -d ./strimzi-kustomize/\_source
+
+> 
