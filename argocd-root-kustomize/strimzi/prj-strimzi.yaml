@@ -4,7 +4,7 @@ metadata:
   name: strimzi
 spec:
   # Project description
-  description: Strimzi Projekt
+  description: Strimzi
 
   sourceRepos:
     - "*"
