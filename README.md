@@ -34,12 +34,24 @@ Cheers!
 
 > argocd account update-password --current-password $ARGOCD_INIT_PWD --new-password admin1234
 
+> kustomize build ./argocd-root-kustomize/\_bootstrap/ | kubectl apply -f -
+
 > minikube service argocd -n argocd
 
-> kustomize build ./argocd-root-kustomize/\_bootstrap/ | kubectl apply -f -
+login with admin / admin1234
+
+## Strimzi
 
 > wget https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.27.1/strimzi-0.27.1.zip -O ./strimzi-kustomize/\_source/strimzi.zip
 
 > unzip ./strimzi-kustomize/\_source/strimzi.zip -d ./strimzi-kustomize/\_source
 
-> 
+> sed -i 's/namespace: .*/namespace: strimzi/' ./strimzi-kustomize/\_source/strimzi-0.27.1/install/cluster-operator/*RoleBinding\*.yaml
+
+> Edit the install/cluster-operator/060-Deployment-strimzi-cluster-operator.yaml file and set the STRIMZI_NAMESPACE environment variable to the namespace kafka.
+
+> kubectl create -f ./strimzi-kustomize/\_source/strimzi-0.27.1/install/cluster-operator/ -n strimzi
+
+> kubectl create -f ./strimzi-kustomize/\_source/strimzi-0.27.1/install/cluster-operator/020-RoleBinding-strimzi-cluster-operator.yaml -n kafka
+
+> kubectl create -f ./strimzi-kustomize/\_source/strimzi-0.27.1/install/cluster-operator/031-RoleBinding-strimzi-cluster-operator-entity-operator-delegation.yaml -n kafka

@@ -5,4 +5,5 @@ namespace: strimzi
 
 resources:
   - namespace
-
+  - role-binding
+  - cluster-operator
