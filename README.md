@@ -35,3 +35,5 @@ Cheers!
 > argocd account update-password --current-password $ARGOCD_INIT_PWD --new-password admin1234
 
 > minikube service argocd -n argocd
+
+> kustomize build ./argocd-root-kustomize/\_bootstrap/ | kubectl apply -f -

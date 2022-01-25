@@ -7,7 +7,7 @@ spec:
   project: root
   source:
     repoURL: "https://github.com/DonatoVerardi/hello-kafka.git"    
-    path: "/argocd-root-kustomize"
+    path: "argocd-root-kustomize"
     targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
