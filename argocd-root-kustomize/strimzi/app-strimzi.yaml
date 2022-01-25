@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: strimzi
+spec:
+  project: strimzi
+  source:
+    repoURL: "https://github.com/DonatoVerardi/hello-kafka.git"
+    path: "/strimzi-kustomize"
+    targetRevision: "master"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: strimzi
+  syncPolicy: {}

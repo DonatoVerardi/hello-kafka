@@ -4,5 +4,5 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-- app-root.yaml
-- prj-root.yaml
+  - app-strimzi.yaml
+  - prj-strimzi.yaml
