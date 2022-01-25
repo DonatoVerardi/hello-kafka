@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root
+  namespace: argocd
+spec:
+  project: root
+  source:
+    repoURL: "https://git.swisscom.com/scm/vdbp-omega/argocd-apps-prd-root-kustomize.git"
+    path: .
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: helix-argocd
+  syncPolicy:
+    automated:
+      selfHeal: true
