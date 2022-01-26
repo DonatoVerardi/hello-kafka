@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: grafana
+spec:
+  # Project description
+  description: grafana
+
+  sourceRepos:
+    - "*"
+
+  destinations:
+    - namespace: "*"
+      server: "*"
+
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"

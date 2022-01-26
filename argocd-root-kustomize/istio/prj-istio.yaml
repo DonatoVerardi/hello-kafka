@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: istio
+spec:
+  # Project description
+  description: istio
+
+  sourceRepos:
+    - "*"
+
+  destinations:
+    - namespace: "*"
+      server: "*"
+
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"

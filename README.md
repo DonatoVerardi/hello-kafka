@@ -7,12 +7,15 @@ The goal of this lab is to be able to deploy kafka and the all ecosystem with a 
 -> ArgoCD
 -> Strimzi
 -> Schema Registry
+-> Kafka Connect
 -> ksqlBD
 -> Cruise Control
--> Open Policy Agent / Styra
+
 -> Keycloak
 -> Istio / envoy / Kiali
 -> Prometheus / Grafana
+
+-> Open Policy Agent / Gateway
 
 Cheers!
 
@@ -54,4 +57,12 @@ login with admin / admin1234
 
 > kubectl create -f ./strimzi-kustomize/\_source/strimzi-0.27.1/install/cluster-operator/020-RoleBinding-strimzi-cluster-operator.yaml -n kafka
 
+## istio
+
+> istioctl install --set profile=demo -y
+
+# test
+
 > kubectl create -f ./strimzi-kustomize/\_source/strimzi-0.27.1/install/cluster-operator/031-RoleBinding-strimzi-cluster-operator-entity-operator-delegation.yaml -n kafka
+
+> kubectl -n kafka run kafka-producer -ti --image=quay.io/strimzi/kafka:0.27.1-kafka-3.0.0 --rm=true --restart=Never -- bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic my-topic

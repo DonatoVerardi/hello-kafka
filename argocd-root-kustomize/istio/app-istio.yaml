@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio
+spec:
+  project: istio
+  source:
+    repoURL: "https://github.com/DonatoVerardi/hello-kafka.git"
+    path: "istio-kustomize"
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: istio
+  syncPolicy: {}

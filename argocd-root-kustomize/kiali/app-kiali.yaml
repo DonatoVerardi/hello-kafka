@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kiali
+spec:
+  project: kiali
+  source:
+    repoURL: "https://github.com/DonatoVerardi/hello-kafka.git"
+    path: "kiali-kustomize"
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: kiali
+  syncPolicy: {}
