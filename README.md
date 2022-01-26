@@ -61,6 +61,12 @@ login with admin / admin1234
 
 > istioctl install --set profile=demo -y
 
+> kubectl label namespace kafka istio-injection=enabled
+
+> istioctl dashboard kiali
+
+> minikube tunnel
+
 # test
 
 > kubectl create -f ./strimzi-kustomize/\_source/strimzi-0.27.1/install/cluster-operator/031-RoleBinding-strimzi-cluster-operator-entity-operator-delegation.yaml -n kafka

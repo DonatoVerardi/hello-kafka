@@ -33,12 +33,53 @@ spec:
       transaction.state.log.min.isr: 1
       default.replication.factor: 1
       min.insync.replicas: 1
+    template:
+      statefulset:
+        metadata:
+          labels:
+            app: kafka-cluster-demo-app-log
+            version: 1.0
+      pod:
+        metadata:
+          labels:
+            app: kafka-cluster-demo-app-log
+            version: 1.0
+          annotations:
+            sidecar.istio.io/inject: "true"
   zookeeper:
     replicas: 1
     storage:
       type: persistent-claim
       size: 1Gi
       deleteClaim: false
+    template:
+      statefulset:
+        metadata:
+          labels:
+            app: kafka-zookeeper-demo-app-log
+            version: 1.0
+      pod:
+        metadata:
+          labels:
+            app: kafka-zookeeper-demo-app-log
+            version: 1.0
+          annotations:
+            sidecar.istio.io/inject: "true"
   entityOperator:
     topicOperator: {}
     userOperator: {}
+    template:
+      deployment:
+        metadata:
+          labels:
+            app: kafka-entity-operator-demo-app-log
+            version: 1.0
+            app-type: entity-operator
+      pod:
+        metadata:
+          labels:
+            app: kafka-entity-operator-demo-app-log
+            version: 1.0
+            app-type: entity-operator
+          annotations:
+            sidecar.istio.io/inject: "true"
