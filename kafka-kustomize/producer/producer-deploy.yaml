@@ -23,12 +23,16 @@ spec:
 
         #command: ["/bin/sh"]
         #args: ["-c", "while true; do echo hello; sleep 10;done"]
-       
+      
         command: ["/bin/sh"]
-        args: ["-c", "/opt/kafka/bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic my-topic; echo hello world; sleep 3600"]
-        #command: ["/opt/kafka/bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic my-topic while true; do echo hello; sleep 10;done"]
-        
-        #args: ["while true; do echo hello; sleep 10;done"]        
-        resources: {}
+        args: ["-c", "while true; do date | /opt/kafka/bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic my-topic; sleep 10;done"]
+
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "20m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
 status: {}
 
