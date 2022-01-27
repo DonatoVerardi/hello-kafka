@@ -6,3 +6,4 @@ namespace: kafka
 resources:  
   - cluster
   - topic
+  - producer
