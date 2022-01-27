@@ -1,0 +1,38 @@
+#  kubectl -n kafka run kafka-consumer -ti --image=quay.io/strimzi/kafka:0.27.1-kafka-3.0.0 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic my-topic --from-beginning
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: consumer-deploy
+  name: consumer-deploy
+  namespace: kafka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumer-deploy
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: consumer-deploy
+    spec:
+      containers:
+      - image: quay.io/strimzi/kafka:0.27.1-kafka-3.0.0
+        name: kafka-consumer
+
+        #command: ["/bin/sh"]
+        #args: ["-c", "while true; do echo hello; sleep 10;done"]
+      
+        command: ["/bin/sh"]
+        args: ["-c", "/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic my-topic"]
+        
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "20m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+status: {}
+
