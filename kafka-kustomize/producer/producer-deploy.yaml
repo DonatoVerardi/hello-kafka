@@ -24,8 +24,7 @@ spec:
         #command: ["/bin/sh"]
         #args: ["-c", "while true; do echo hello; sleep 10;done"]
        
-        command: ["/opt/kafka/bin/kafka-console-producer.sh"]
-        args: ["--broker-list","my-cluster-kafka-bootstrap:9092","--topic","my-topic", "while true; do echo hello; sleep 10;done"]
+        command: ["/opt/kafka/bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic my-topic while true; do echo hello; sleep 10;done"]
         
         #args: ["while true; do echo hello; sleep 10;done"]        
         resources: {}
