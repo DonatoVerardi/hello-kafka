@@ -20,9 +20,13 @@ spec:
       containers:
       - image: quay.io/strimzi/kafka:0.27.1-kafka-3.0.0
         name: kafka-producer
-        command: ["/bin/sh"]
-        args: ["-c", "while true; do echo hello; sleep 10;done"]
-        #command: ["bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic my-topic"]
+
+        #command: ["/bin/sh"]
+        #args: ["-c", "while true; do echo hello; sleep 10;done"]
+       
+        command: ["/opt/kafka/bin/kafka-console-producer.sh"]
+        args: ["--broker-list my-cluster-kafka-bootstrap:9092", "--topic my-topic", "while true; do echo hello; sleep 10;done"]
+        
         #args: ["while true; do echo hello; sleep 10;done"]        
         resources: {}
 status: {}
